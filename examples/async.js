@@ -15,7 +15,7 @@ const sumReducer = AJ.reduce((x, y) => x + y, 0);
 const doubleMap = AJ.map(x => x * 2);
 
 (async function IIFE() {
-    await AJ.run(pipe(doubleMap, sumReducer), asyncArray);
+    console.log(await AJ.run(pipe(doubleMap, sumReducer), asyncArray));
 })();
 
 
