@@ -122,3 +122,12 @@ res.then(x => console.log(x)); // 420
 // WARNING: OUTPUTS ARE IN CONCURRENCY
 ```
 
+## weight
+
+All modules and functions together are 3.284Kb **without** compression
+
+
+## License
+
+MIT
+
