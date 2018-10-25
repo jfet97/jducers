@@ -100,11 +100,11 @@ const asyncDoubleMap = AJ.map(double);
 const asyncSumReduce = AJ.reduce(sum);
 
 let jducer = pipe(asyncIsOddFilter, asyncDoubleMap);
-let res = AJ.run(jducer, array); 
+let res = AJ.run(jducer, asyncArray); 
 res.then(x => console.log(x)); // [2, 6, 10, 14, 18, 22, 26, 30, 34, 38]
 
 jducer = pipe(syncIsOddFilter, syncDoubleMap, syncSumReduce);
-res = AJ.run(jducer, array); 
+res = AJ.run(jducer, asyncArray); 
 res.then(x => console.log(x)); // 200
 
 const observer = AJ.observerFactory(console.log);
@@ -116,7 +116,7 @@ const observer = AJ.observerFactory(console.log);
 jducer = pipe(observer, syncDoubleMap, observer, syncSumReduce);
 // we will se each value before and after the double mapper function
 // 1 2 2 4 3 6 4 8 5 10 6 12 ...
-res = AJ.run(jducer, array); 
+res = AJ.run(jducer, asyncArray); 
 res.then(x => console.log(x)); // 400
 ```
 
