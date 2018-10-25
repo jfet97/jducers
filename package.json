@@ -1,6 +1,6 @@
 {
   "name": "jducers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A js transducers-like implementation using generators",
   "main": "index.js",
   "directories": {

@@ -13,12 +13,12 @@ const mult = (acc, val) => acc * val; // reducer
 const doubleMap = SJ.map(double);
 const minusOneMap = SJ.map(minusOne);
 const isOddFilter = SJ.filter(isOdd);
-const plusTreReduce = SJ.reduce(plusTre, []);
+const plusThreeReduce = SJ.reduce(plusTre, []);
 const sumReduce = SJ.reduce(sum);
 const multiplyReduce = SJ.reduce(mult, 1);
 
 
-let jducer = pipe(isOddFilter, minusOneMap, doubleMap, plusTreReduce);
+let jducer = pipe(isOddFilter, minusOneMap, doubleMap, plusThreeReduce);
 let res = SJ.run(jducer, array);
 console.log(res);
 

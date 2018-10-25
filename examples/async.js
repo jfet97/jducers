@@ -1,5 +1,5 @@
 import { pipe, compose } from 'jducers/src/utility';
-import * as AJ from 'jducers/src/jducers/sync'
+import * as AJ from 'jducers/src/jducers/async'
 
 const asyncArray = {
     array: [1, 2, 3, 4, 5],
@@ -15,12 +15,12 @@ const sumReducer = AJ.reduce((x, y) => x + y, 0);
 const doubleMap = AJ.map(x => x * 2);
 
 (async function IIFE() {
-    console.log(await AJ.run(pipe(doubleMap, sumReducer), asyncArray));
+    await AJ.run(pipe(doubleMap, sumReducer), asyncArray);
 })();
 
 
 let myObserver = AJ.observerFactory(console.log, (x) => console.log(x + x));
 
 (async function IIFE() {
-    console.log(await AJ.run(pipe(myObserver, doubleMap, myObserver, sumReducer, myObserver), asyncArray));
+    await AJ.run(pipe(myObserver, doubleMap, myObserver, sumReducer, myObserver), asyncArray);
 })();
