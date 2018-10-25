@@ -61,7 +61,7 @@ console.log(res); // 200
 ```
 
 ## async
-Async's jducers helpers (useful for async iterables): 
+Async's jducers helpers (useful for async iterables and concurrent iterations): 
 
 ```js
 import { map, filter, reduce, run, observerFactory }  from 'jducers/src/jducers/async'
