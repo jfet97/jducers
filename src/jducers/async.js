@@ -1,5 +1,7 @@
 import { curryForReduce, curry } from './../utility';
 
+
+
 async function* _filter(pred, input) {
     for await (const x of input) pred(x) ? yield x : null;
 }
@@ -30,6 +32,23 @@ async function* _reduce(reducer, initValue, input) {
     if (!flag) yield acc;
 }
 
+function observerFactory(...cbs) {
+
+    const callbacks = [...cbs];
+
+    async function* observer(input) {
+        for await (const x of input) {
+            callbacks.forEach(cb => cb(x));
+            yield x;
+        }
+    }
+
+    observer.add = (...cbs) => observer.callbacks.push(...cbs);
+    return observer;
+}
+
+
+
 async function run(jducer, input) {
     const res = [];
     for await (const x of jducer(input)) {
@@ -38,8 +57,10 @@ async function run(jducer, input) {
     return res.length == 1 ? res[0] : res;
 }
 
+
+
 const map = curry(_map);
 const filter = curry(_filter);
 const reduce = curryForReduce(_reduce);
 
-export { map, filter, reduce, run }
+export { map, filter, reduce, run, observerFactory }
