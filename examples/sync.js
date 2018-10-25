@@ -4,7 +4,7 @@ import * as SJ from 'jducers/src/jducers/sync'
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 const isOdd = i => !!(i % 2); // predicate
-const double = i => i * i; // map cb
+const double = i => i * 2; // map cb
 const minusOne = i => --i; // map cb
 const plusTre = (acc, val) => (acc.push(val + 3), acc); // reducer
 const sum = (acc, val) => acc + val; // reducer
