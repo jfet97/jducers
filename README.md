@@ -127,7 +127,7 @@ res.then(x => console.log(x)); // 420
 All modules and functions together are 3.284Kb **without** compression
 
 
-## License
+## license
 
 MIT
 
