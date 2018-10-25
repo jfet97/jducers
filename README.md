@@ -114,7 +114,7 @@ const observer = AJ.observerFactory(console.log);
 */
   
 jducer = pipe(observer, asyncDoubleMap, observer, asyncSumReduce);
-// we will se each value before and after the double mapper function
+// we will see each value before and after the double mapper function
 // 1 2 2 4 3 6 4 8 5 10 6 12 ...
 res = AJ.run(jducer, asyncArray); 
 res.then(x => console.log(x)); // 420
