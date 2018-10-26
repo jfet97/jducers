@@ -63,7 +63,7 @@ console.log(res); // 200
 ```
 
 ## async
-Async's jducers helpers (useful for async iterables and concurrent iterations): 
+Async's jducers helpers (useful for async iterables and concurrent async iterations): 
 
 ```js
 import { map, filter, reduce, run, observerFactory }  from 'jducers/src/jducers/async'
@@ -118,7 +118,7 @@ const observer = AJ.observerFactory(console.log);
 */
   
 jducer = pipe(observer, asyncDoubleMap, observer, asyncSumReduce);
-// we will se each value before and after the double mapper function
+// we will see each value before and after the double mapper function
 // 1 2 2 4 3 6 4 8 5 10 6 12 ...
 res = run(jducer); 
 res.then(x => console.log(x)); // 420
@@ -131,7 +131,7 @@ res.then(x => console.log(x)); // 420
 All modules and functions together are 3.284Kb **without** compression
 
 
-## License
+## license
 
 MIT
 
