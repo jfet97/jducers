@@ -108,7 +108,7 @@ let res = run(jducer);
 res.then(x => console.log(x)); // [2, 6, 10, 14, 18, 22, 26, 30, 34, 38]
 
 jducer = pipe(asyncIsOddFilter, asyncDoubleMap, asyncSumReduce);
-res = run(jducer);; 
+res = run(jducer);
 res.then(x => console.log(x)); // 200
 
 const observer = AJ.observerFactory(console.log);
