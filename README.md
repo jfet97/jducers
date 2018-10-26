@@ -130,6 +130,13 @@ res.then(x => console.log(x)); // 420
 
 All modules and functions together are 3.284Kb **without** compression
 
+## performance
+
+Bad, because **yield** is still an expensive operation
+
+## fun
+
+A lot! ES8 is so powerful, in few lines I created something very difficult to do before without a library.
 
 ## license
 
