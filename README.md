@@ -136,7 +136,7 @@ Bad, because **yield** is still an expensive operation
 
 ## fun
 
-A lot! ES8 is so powerful, in few lines I created something very difficult to do before without a library.
+A lot! ES8 is so powerful, in few lines I created something very difficult to do before without a library
 
 ## license
 
