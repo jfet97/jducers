@@ -15,10 +15,10 @@ $ npm i --save jducers
 ```
 
 ## utility
-A little fp utility library used by jducers and available for you with **pipe**, **compose** and **curry**
+A little fp utility library used by jducers and available for you with **pipe**, **compose**, **curry**, **partial** and **partialRight**
 
 ```js
-import { pipe, compose, curry } from 'jducers/src/utility';
+import { pipe, compose, curry, partial, partialRight } from 'jducers/src/utility';
 ```
 
 ## sync
@@ -39,7 +39,7 @@ import * as SJ from 'jducers/src/jducers/sync'
 
 ```js
 import * as SJ from 'jducers/src/jducers/sync'
-import { pipe } from 'jducers/src/utility';
+import { pipe, partialRight } from 'jducers/src/utility';
 
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -51,12 +51,14 @@ const syncIsOddFilter = SJ.filter(isOdd);
 const syncDoubleMap = SJ.map(double);
 const syncSumReduce = SJ.reduce(sum);
 
+const run = partialRight(SJ.run, array);
+
 let jducer = pipe(syncIsOddFilter, syncDoubleMap);
-let res = SJ.run(jducer, array);
+let res = run(jducer);
 console.log(res); // [2, 6, 10, 14, 18, 22, 26, 30, 34, 38]
 
 jducer = pipe(syncIsOddFilter, syncDoubleMap, syncSumReduce);
-res = SJ.run(jducer, array);
+res = run(jducer);
 console.log(res); // 200
 ```
 
@@ -79,7 +81,7 @@ import * as AJ from 'jducers/src/jducers/async'
 
 ```js
 import * as AJ from 'jducers/src/jducers/async'
-import { pipe } from 'jducers/src/utility';
+import { pipe, partialRight } from 'jducers/src/utility';
 
 const asyncArray = {
     array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
@@ -99,12 +101,14 @@ const asyncIsOddFilter = AJ.filter(isOdd);
 const asyncDoubleMap = AJ.map(double);
 const asyncSumReduce = AJ.reduce(sum);
 
+const run = partialRight(AJ.run, asyncArray);
+
 let jducer = pipe(asyncIsOddFilter, asyncDoubleMap);
-let res = AJ.run(jducer, asyncArray); 
+let res = run(jducer); 
 res.then(x => console.log(x)); // [2, 6, 10, 14, 18, 22, 26, 30, 34, 38]
 
 jducer = pipe(asyncIsOddFilter, asyncDoubleMap, asyncSumReduce);
-res = AJ.run(jducer, asyncArray); 
+res = run(jducer);; 
 res.then(x => console.log(x)); // 200
 
 const observer = AJ.observerFactory(console.log);
@@ -116,7 +120,7 @@ const observer = AJ.observerFactory(console.log);
 jducer = pipe(observer, asyncDoubleMap, observer, asyncSumReduce);
 // we will se each value before and after the double mapper function
 // 1 2 2 4 3 6 4 8 5 10 6 12 ...
-res = AJ.run(jducer, asyncArray); 
+res = run(jducer); 
 res.then(x => console.log(x)); // 420
 
 // WARNING: OUTPUTS ARE IN CONCURRENCY

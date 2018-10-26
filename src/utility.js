@@ -18,4 +18,7 @@ const curry = fn => {
     }
 }
 
-export { pipe, compose, curryForReduce, curry }
+const partial = (fn, ...preset) => (...later) => fn(...preset, ...later);
+const partialRight = (fn, ...preset) => (...later) => fn(...later, ...preset);
+
+export { pipe, compose, curryForReduce, curry, partial, partialRight }
