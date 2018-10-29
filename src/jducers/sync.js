@@ -20,7 +20,7 @@ function* _reduce(reducer, initValue, input) {
     // if the output is an array, reduce has to behave like a map/filter
     // values must flow 
     // if the output is a single number for example, reduce has to interrupt
-    // the flows of value until she has done her job
+    // the flows of values until she has done her job
 
     let acc;
     if (initValue != undefined) {
