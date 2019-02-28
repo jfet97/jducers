@@ -1,5 +1,5 @@
 # jducers
-A js transducers-like implementation using generators and ES8 async generators.
+A js transducers-like implementation using generators and ES9 async generators.
 
 A composed function expecting a combination function to make a reducer is called **transducer**.
 Transducers are useful to compose adjacent **map()**, **filer()** and **reduce()** operations together to improve performaces.
